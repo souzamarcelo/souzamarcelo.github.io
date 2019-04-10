@@ -1,3 +1,10 @@
+@media (min-width: 1000px) {
+  .corpo {
+    padding-right: 120px;
+    padding-left: 120px;
+  }
+}
+
 blockquote {
   font-size: 15px;
   padding: 7px 12px;
