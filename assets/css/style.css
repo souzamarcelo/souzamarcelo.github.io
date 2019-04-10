@@ -1,7 +1,21 @@
-@media (min-width: 1000px) {
+@media (min-width: 992px) {
   .corpo {
     padding-right: 120px;
     padding-left: 120px;
+  }
+}
+
+@media (max-width: 992px) {
+  #div-photo {
+    width: 100%;
+  }
+
+  #div-presentation {
+    width: 100%;
+  }
+  
+  .jumbotron {
+    text-align: center;
   }
 }
 
