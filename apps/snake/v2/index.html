@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8" />
+		<title>Snake</title>
+		<style>
+			#mycanvas {
+				background-color: white;
+				margin-top: -300px;
+				margin-left: -300px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+                border: 1px solid black;
+			}
+            
+            body {
+                background-color: #f2f4f8;
+                background: url('bg-body.jpg');
+            }
+            
+            #footer {
+                text-align: right;
+                font-family: "Verdana";
+                font-size: 14pt;
+                color: white;
+                
+                margin: auto;
+                width: 100%;
+                bottom: 5px;
+                right: 10px;
+                position: fixed;
+            }
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" height="600" width="600">O seu browser não suporta este elemento</canvas>
+        <div id="footer">Marcelo de Souza</div>
+        
+		<script>
+			var canvas = document.getElementById("mycanvas");
+			var ctx = canvas.getContext("2d");
+            var alturaBloco = larguraBloco = 15, time = 70, decrementoTempo = 2, estado, score = 0, recorde, larguraParede = 15, aberta = true, contador = 0;
+            
+            var audioFundo = new Audio();
+            audioFundo.src = "FundoJogos.mp3";
+            audioFundo.volume = 0.4;
+            audioFundo.load();
+            audioFundo.loop = true;
+            
+            function Bloco() {
+                var x;
+                var y;
+                var direction = "right";
+                
+                this.desenha = function(cabeca){
+                    var imgBloco = new Image();
+                    ctx.shadowBlur = 3;
+                    
+                    if(!cabeca){
+                        imgBloco.src = "esfera.png";
+                        ctx.drawImage(imgBloco, this.x, this.y, larguraBloco, alturaBloco);
+                    } else {
+                        if(aberta){
+                            imgBloco.src = "cobra-cabeca-aberta.png";
+                        } else {
+                            imgBloco.src = "cobra-cabeca-fechada.png";
+                        }
+                        if(contador == 7){
+                            contador = 0;
+                            aberta = !aberta;
+                        }
+                        contador++;
+                        
+                        if(this.direction == "left"){
+                            ctx.save();
+                            ctx.translate(this.x, this.y);
+                            ctx.scale(1, -1);
+                            ctx.rotate(180 * Math.PI / 180);
+                            ctx.drawImage(imgBloco, -larguraBloco * 1.1, 0, larguraBloco * 1.1, alturaBloco * 1.1);
+                            ctx.restore();
+                        } 
+                        else if(this.direction == "up"){
+                            ctx.save();
+                            ctx.translate(this.x, this.y);
+                            ctx.rotate(270 * Math.PI / 180);
+                            ctx.drawImage(imgBloco, -larguraBloco * 1.1, 0, larguraBloco * 1.1, alturaBloco * 1.1);
+                            ctx.restore();
+                        }
+                        else if(this.direction == "down"){
+                            ctx.save();
+                            ctx.translate(this.x, this.y);
+                            ctx.rotate(90 * Math.PI / 180);
+                            ctx.drawImage(imgBloco, 0, -alturaBloco * 1.1, larguraBloco * 1.1, alturaBloco * 1.1);
+                            ctx.restore();
+                        }
+                        else {
+                            ctx.drawImage(imgBloco, this.x, this.y, larguraBloco * 1.15, alturaBloco * 1.15);
+                        }
+                    }
+                    
+                    
+                }
+            
+                this.atualiza = function(){
+                    if(this.direction == "right")
+                        this.x += larguraBloco;
+                    else if(this.direction == "left")
+                        this.x -= larguraBloco;
+                    else if(this.direction == "down")
+                        this.y += larguraBloco;
+                    else if(this.direction == "up")
+                        this.y -= larguraBloco;
+                }
+            }
+            
+            var estados = {
+                telaInicial: 0,
+                jogando: 1,
+                perdeu: 2
+            };
+            
+			var snake = {
+                blocos: [],
+                
+                desenha: function(){
+                    ctx.fillStyle = "black";
+                    for(var i = 0; i < this.blocos.length; i++)
+                        if(i == 0)
+                            this.blocos[i].desenha(true);
+                        else
+                            this.blocos[i].desenha(false);
+                },
+                
+                atualiza: function(){
+                    for(var i = 0; i < this.blocos.length; i++)
+                        this.blocos[i].atualiza();
+                    
+                    for(var i = this.blocos.length - 1; i > 0; i--){
+                        if(this.blocos[i].direction != this.blocos[i-1].direction){
+                            this.blocos[i].direction = this.blocos[i-1].direction;
+                        }   
+                    }
+                    
+                    var primeiroBloco = this.blocos[0];
+                    
+                    //Verifica se o alimento foi atingido
+                    //(b1 <= a2 E a1 <= b2) E (d2 >= c1 E d1 <= c2)
+                    if(primeiroBloco.x < comida.x + larguraBloco && comida.x < primeiroBloco.x + larguraBloco)
+                        if(primeiroBloco.y + alturaBloco > comida.y && primeiroBloco.y < comida.y + alturaBloco){
+                            score += Math.floor(comida.tempoRestante / 100);
+                            comida.tempoRestante = -1;
+                            this.insereBloco();
+                            time -= decrementoTempo;
+                        }
+                    
+                    //Verifica se a parede foi atingida                
+                    if(primeiroBloco.x < larguraParede || primeiroBloco.x + larguraBloco > 600 - larguraParede || primeiroBloco.y < larguraParede || primeiroBloco.y + alturaBloco > 600 - larguraParede){
+                        estado = estados.perdeu;
+                    }
+                    
+                    //Verifica se a cobra atingiu a si mesma
+                    var tam = this.blocos.length
+                    for(var i = 1; i < tam; i++){
+                        var bloco = this.blocos[i];
+                        if(primeiroBloco.x + (larguraBloco / 2) >= bloco.x && primeiroBloco.x + (larguraBloco / 2) <= bloco.x + larguraBloco)
+                            if(primeiroBloco.y + (alturaBloco / 2) >= bloco.y && primeiroBloco.y + (alturaBloco / 2) <= bloco.y + alturaBloco){
+                                estado = estados.perdeu;
+                            }
+                    }
+                    
+                    if(estado == estados.perdeu){
+                        if(score > recorde){
+                            localStorage.setItem("recorde-snake", score);
+                            recorde = score;
+                            score = -1;
+                        }
+                    }
+                },
+                
+                insereBloco: function(){
+                    var ultimoBloco = this.blocos[this.blocos.length - 1];
+                    
+                    if(ultimoBloco == null){
+                        ultimoBloco = new Bloco();
+                        ultimoBloco.direction = "right";
+                        ultimoBloco.x = 300;
+                        ultimoBloco.y = 300;
+                    }
+                        
+                    
+                    var newBloco = new Bloco();
+                    newBloco.direction = ultimoBloco.direction;
+                    
+                    if(ultimoBloco.direction == "right"){
+                        newBloco.x = ultimoBloco.x - larguraBloco;
+                        newBloco.y = ultimoBloco.y;
+                    }
+                    else if(ultimoBloco.direction == "left"){
+                        newBloco.x = ultimoBloco.x + larguraBloco;
+                        newBloco.y = ultimoBloco.y;
+                    }
+                    else if(ultimoBloco.direction == "up"){
+                        newBloco.x = ultimoBloco.x;
+                        newBloco.y = ultimoBloco.y + alturaBloco;
+                    }
+                    else if(ultimoBloco.direction == "down"){
+                        newBloco.x = ultimoBloco.x;
+                        newBloco.y = ultimoBloco.y - alturaBloco;
+                    }
+                    
+                    this.blocos.push(newBloco);
+                },
+                
+                changeDirection: function(dir){
+                    var primeiroBloco = this.blocos[0];
+                    
+                    if(dir == "up"){
+                        if(primeiroBloco.direction == "left" || primeiroBloco.direction == "right")
+                            primeiroBloco.direction = "up";
+                    }
+                    else if(dir == "down"){
+                        if(primeiroBloco.direction == "left" || primeiroBloco.direction == "right")
+                            primeiroBloco.direction = "down";
+                    }
+                    else if(dir == "left"){
+                        if(primeiroBloco.direction == "up" || primeiroBloco.direction == "down")
+                            primeiroBloco.direction = "left";
+                    }
+                    else if(dir == "right"){
+                        if(primeiroBloco.direction == "up" || primeiroBloco.direction == "down")
+                            primeiroBloco.direction = "right";
+                    }
+                }
+            };
+            
+            var comida = {
+                x: -100,
+                y: -100,
+                tempoRestante: -1,
+                
+                atualiza: function(){
+                    this.tempoRestante -= time;
+                },
+                    
+                desenha: function(){
+                    var imgMaca = new Image();
+                    imgMaca.src = "maca.png";
+                    
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = "white";
+                    
+                    ctx.drawImage(imgMaca, this.x, this.y, larguraBloco, alturaBloco);
+                }
+            };
+            
+			document.addEventListener("keydown", function(e) {
+                if(estado == estados.jogando){
+                    if(e.keyCode == 39) snake.changeDirection("right");
+                    else if(e.keyCode == 40) snake.changeDirection("down");
+                    else if(e.keyCode == 37) snake.changeDirection("left");
+                    else if(e.keyCode == 38) snake.changeDirection("up");
+                }
+                else if(estado == estados.telaInicial){
+                    if(e.keyCode == 13){
+                        estado = estados.jogando;
+                        audioFundo.play();
+                    }
+                }
+                else if(estado == estados.perdeu){
+                    if(e.keyCode == 13){
+                        reset();
+                        estado = estados.jogando;
+                        audioFundo.play();
+                    }
+                }
+			});
+            
+            function atualiza(){
+                if(estado == estados.jogando){
+                    snake.atualiza();
+                    comida.atualiza();
+                    if(comida.tempoRestante < 0){
+                        comida.x = 25 + Math.floor(550 * Math.random());
+                        comida.y = 25 + Math.floor(550 * Math.random());
+                        comida.tempoRestante = (time * 100) + Math.floor(time * 25 * Math.random());
+                    }
+                }
+            }
+			
+			function desenha() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                var imgFundo = new Image();
+                imgFundo.src = "fundo.png";
+                ctx.drawImage(imgFundo, 0, 0, 600, 600);
+                
+                if(estado == estados.jogando){
+                    snake.desenha();
+                    comida.desenha();
+                    
+                    ctx.shadowColor = "white";
+                    
+                    ctx.fillStyle = "black";
+                    ctx.font = "25px Verdana";
+                    ctx.fillText(score, 20, 40);
+                }
+                else if(estado == estados.telaInicial){
+                    ctx.shadowColor = "black";
+                    
+                    var imgCobraInicio = new Image();
+                    imgCobraInicio.src = "cobra-inicio.png";
+                    ctx.drawImage(imgCobraInicio, 50, 0, 300, 500);
+                    
+                    var imgSnake = new Image();
+                    imgSnake.src = "snake.png";
+                    ctx.drawImage(imgSnake, 220, 80, 350, 150);
+                    
+                    ctx.shadowColor = "black";
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
+                    ctx.shadowBlur = 8;
+                    
+                    ctx.fillStyle = "white";
+                    ctx.font = "18px Verdana";
+                    ctx.fillText("Pressione <enter> para jogar", 320, 585);
+                }
+                else if(estado == estados.perdeu){
+                    audioFundo.pause();
+                    audioFundo.currentTime = 0.0;
+                    
+                    snake.desenha();
+                    
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = "black";
+                    
+                    var imgPerdeu = new Image();
+                    imgPerdeu.src = "perdeu.png";
+                    ctx.drawImage(imgPerdeu, 60, 10, 470, 180);
+                    
+                    var imgCobraPerdeu = new Image();
+                    imgCobraPerdeu.src = "cobra-perdeu.png";
+                    var escala = 0.9;
+                    var novaLargura = escala * imgCobraPerdeu.width;
+                    var novaAltura = escala * imgCobraPerdeu.height;
+                    ctx.drawImage(imgCobraPerdeu, 300 - (novaLargura / 2), 180, novaLargura, novaAltura);
+                    
+                    ctx.fillStyle = "white";
+                    ctx.font = "18px Verdana";
+                    ctx.fillText("Pressione <enter> para jogar", 320, 585);
+                    
+                    ctx.font = "bold 22px Verdana";
+                    if(score == -1){
+                        if(recorde < 100)
+                            ctx.fillText("Novo recorde: " + recorde, 205, 500);
+                        else if(recorde < 1000)
+                            ctx.fillText("Novo recorde: " + recorde, 195, 500);
+                        else
+                            ctx.fillText("Novo recorde: " + recorde, 188, 500);
+                    } else {
+                        if(recorde < 100)
+                            ctx.fillText("Recorde atual: " + recorde, 205, 500);
+                        else if(recorde < 1000)
+                            ctx.fillText("Recorde atual: " + recorde, 195, 500);
+                        else
+                            ctx.fillText("Recorde atual: " + recorde, 188, 500);
+                        
+                        ctx.fillStyle = "black";
+                        ctx.font = "25px Verdana";
+                        ctx.shadowColor = "white";
+                        ctx.fillText(score, 20, 40);
+                    }
+                }
+                
+                ctx.shadowColor = "black";
+                
+                var imgGrama = new Image();
+                imgGrama.src = "grama.png";
+                
+                ctx.save();
+                ctx.rotate(90 * Math.PI / 180);
+                ctx.drawImage(imgGrama, 0, -imgGrama.height);
+                ctx.restore();
+                
+                ctx.save();
+                ctx.rotate(180 * Math.PI / 180);
+                ctx.drawImage(imgGrama, -imgGrama.width, -imgGrama.height);
+                ctx.restore();
+                
+                ctx.save();
+                ctx.translate(600, 0);
+                ctx.rotate(270 * Math.PI / 180);
+                ctx.drawImage(imgGrama, -imgGrama.width, -imgGrama.height);
+                ctx.restore();
+                
+                ctx.drawImage(imgGrama, 0, canvas.height - imgGrama.height);
+			}
+			
+            function reset(){
+                snake.blocos = [];
+                score = 0;
+                time = 70;
+                comida.tempoRestante = -1;
+            }
+            
+            function main(){
+                if(snake.blocos.length == 0){
+                    for(var i = 0; i < 7; i++)
+                        snake.insereBloco();
+                    
+                    recorde = localStorage.getItem("recorde-snake");
+                    if(recorde == null)
+                        recorde = 0;
+                }
+                
+                atualiza();
+                desenha();
+                
+                setTimeout(main, time);
+            }
+            
+            estado = estados.telaInicial;
+            main();
+		</script>
+	</body>
+</html>

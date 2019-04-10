@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script type="text/javascript" src="get-elevation.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <meta charset="UTF-8">
+    <title>Elevation from Google API - Marcelo de Souza</title>
+</head>
+<body>
+    <div id="content">
+        <div id="title">
+            <label id="title_text">Get elevation from latitude and longitute</label><br/>
+            <label i="subtitle_text">Using Google API</label>
+        </div>
+        <hr>
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <label class="example">
+                            <i>Input</i><br/>
+                            -30.068249, -51.120300;<br/>
+                            -12.068249, -45.120300
+                        </label>
+                    </td>
+                    <td>
+                        <label class="example">
+                            <i>Output</i><br/>
+                            91.58320617675781;<br/>
+                            704.8895263671875
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <b>Coordinates</b>
+                        </label>
+                    </td>
+                    <td>
+                        <label><b>Elevation data</b></label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <textarea id="coordinates" class="text"></textarea>
+                    </td>
+                    <td>
+                        <textarea id="result" class="text"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="button" id="sButton" value="Submit" onclick="submitButton()"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <hr>
+        <div id="footer">
+            <label id="credits">Marcelo de Souza (bsi.marcelo@gmail.com)</label>
+        </div>
+    </div>
+</body>
+
+<style>
+
+    .example{
+        font-size: 10pt;
+    }
+
+    #credits{
+        font-size: 10pt;
+    }
+
+    #footer{
+        text-align: right;
+        font-size: 10pt;
+    }
+
+    #title_text{
+        font-size: 30px;
+    }
+
+    #subtitle_text{
+        font-size: 14pt;
+    }
+
+    #title{
+        text-align: center;
+    }
+
+    table td{
+        vertical-align: bottom;
+    }
+
+
+    body {
+        margin:0;
+        padding:0;
+        text-align:center; /* hack para o IE */
+    }
+
+    #content {
+        width: 600px;
+        margin: 20px auto;
+        text-align:left; /* "remédio" para o hack do IE */
+    }
+
+    label{
+        font-family:"open sans",arial,sans-serif;
+        color: #444;
+        letter-spacing: -.06em;
+        font-size: 11pt;
+    }
+
+    .text{
+        width: 300px;
+        height: 400px;
+        resize: none;
+        border-radius: 7pt;
+    }
+
+    #sButton{
+        background: #6E7B8B;
+        color: white;
+        border: none;
+        border-radius: 3pt;
+        height: 40px;
+        width: 80px;
+    }
+
+    #sButton:hover{
+        cursor: pointer;
+        background: #68838B;
+    }
+
+</style>
+</html>
