@@ -1,3 +1,16 @@
+:target::before {
+  content: "";
+  display: block;
+  height: 60px;
+  margin: -60px 0 0;
+}
+
+.paper-title {
+  color:#5f206e;
+  color: black;
+  font-weight: 500;
+}
+
 .regular-page {
   margin-top: 25px;
 }
@@ -9,7 +22,7 @@ body {
 }
 
 .work {
-  line-height: 1.15em;
+  line-height: 1.25em;
 }
 
 .contact {
@@ -29,7 +42,7 @@ body {
   letter-spacing: -1.4px;
 }
 
-.div-presentation {
+.div-presentation, .div-presentation p {
   font-size: 20px;
 }
 
@@ -56,7 +69,6 @@ table th, td {
 }
 
 blockquote {
-  font-size: 18px;
   padding: 7px 12px;
 }
 
@@ -128,8 +140,8 @@ h1 {
 
 @media (min-width: 992px) {
   .regular-page {
-    padding-right: 80px;
-    padding-left: 80px;
+    padding-right: 110px;
+    padding-left: 110px;
   }
 }
 
@@ -144,6 +156,20 @@ h1 {
   
   .jumbotron {
     text-align: center;
+  }
+
+  #my-name {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .div-presentation, .div-presentation p {
+    font-size: 18px;
+  }
+
+  #my-name {
+    font-size: 32px;
   }
 }
 
