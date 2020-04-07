@@ -88,15 +88,76 @@
     
     <div class="container">
       <div class="regular-page">
-        <p>Text here.</p>
+        <p>I summarize below my main research topics and provide some brief comments about them.</p>
+
+<hr />
 
 <h2 id="automatic-algorithm-configuration">Automatic Algorithm Configuration</h2>
 
-<p>TBD.</p>
+<p>Automatic techniques have been developed in the last years to automatically search for good parameter settings of some target algorithm. The so-called algorithm configurators apply heuristic algorithms (<a href="http://www.cs.ubc.ca/labs/beta/Projects/ParamILS" target="_blank">ParamILS</a>, <a href="https://bitbucket.org/gga_ac/dgga/src/master" target="_blank">GGA</a>), racing procedures (<a href="http://iridia.ulb.ac.be/irace" target="_blank">irace</a>) or model based approaches (<a href="https://www.automl.org/automated-algorithm-design/algorithm-configuration/smac" target="_blank">SMAC</a>) to explore the parameter space. Some useful content about this research field include:</p>
 
-<h2 id="traffic-simulations-with-electric-vehicles">Traffic Simulations with Electric Vehicles</h2>
+<ul>
+  <li><a href="http://dx.doi.org/10.1007/978-3-319-91086-4_17" target="_blank">This survey article</a></li>
+  <li><a href="https://vimeo.com/199009877" target="_blank">This presentation (video) of Dr. Thomas Stützle</a></li>
+  <li><a href="http://iridia.ulb.ac.be/irace/files/irace-comex-tutorial.pdf" target="_blank">This tutorial describing the use of irace</a></li>
+</ul>
 
-<p>TBD.</p>
+<p>We have recently applied automatic configuration techniques for the design of heuristic optimization algorithms. First, we implement a configurable framework with the algorithm components and their input parameters. Then, we automatically search for good algorithm designs using algorithm configurators. Using this methodology, we found state-of-the-art algorithms for the <a href="/assets/publications/SouzaAndRitt2018evocop.pdf" target="_blank">binary quadratic programming</a> and <a href="/assets/publications/SouzaAndRitt2018cec.pdf" target="_blank">test assignment</a> problems, for example.</p>
+
+<p>We are also working on the improvement of the automatic configuration tools. For example, we are exploring the use of capping mechanisms to speed up the configuration process. We are also developing analysis tools for irace (see <a href="https://github.com/souzamarcelo/cat" target="_blank">cat</a>).</p>
+
+<hr />
+
+<h2 id="metaheuristics">Metaheuristics</h2>
+
+<p>When working with hard optimization problems, exact methods usually take too long to solve medium and large size instances. Metaheuristics are algorithmic models that determine a strategy to explore the search space and give a (hopefully) good solution in a reasonable time. Well-known examples of metaheuristics include: constructive approaches, like greedy randomized adaptive search procedure (GRASP) and ant colony optimization (ACO); search- or trajectory-based approaches, like local search, tabu search and simulated annealing; and population-based approaches, like genetic algorithms and scatter search. The book <a href="https://www.springer.com/gp/book/9783642113420" target="_blank">Metaheuristic Search Concepts (Zäpfel et al., 2010)</a> presents several metaheuristics in detail.</p>
+
+<p>We are interested in apply such algorithms to solve a number of interesting optimization problems, including:</p>
+
+<ul>
+  <li>Bin packing</li>
+  <li>Graph coloring</li>
+  <li>Clique</li>
+  <li>Binary quadratic programming</li>
+  <li>Vehicle routing</li>
+  <li>See other problems <a href="https://en.wikipedia.org/wiki/List_of_NP-complete_problems" target="_blank">here</a></li>
+</ul>
+
+<hr />
+
+<h2 id="agent-based-simulation">Agent-based Simulation</h2>
+
+<p>Agent-based models are frequently used to simulate complex systems and analyze the behavior that emerges from them. Each individual is modeled as an autonomous agent, which interacts with the environment and with other agents to accomplish its design objectives. <a href="https://www.youtube.com/watch?v=TfzZxJ46-z8" target="_blank">This video</a> provides a brief and didactic explanation of agent-based simulations. Additional information can be found in <a href="https://wvvw.aaai.org/ojs/index.php/aimagazine/article/view/2425/2323" target="_blank">this article</a> of Klügl and Bazzan (2012).</p>
+
+<p>We have explored agent-based approaches to simulate traffic scenarios. For example, we studied the presence of <a href="/assets/publications/KosterEtAl2016aire.pdf" target="_blank">malicious agents in a collaborative traffic scenario with inter-vehicular communication</a>. We also used a macroscopic (and mathematical) approach to simulate <a href="/assets/publications/SouzaEtAl2016itsc.pdf" target="_blank">traffic scenarios with electric vehicles</a>, considering both travel time and energy consumption in the route choice for electric vehicles.</p>
+
+<p>There are several agent-based simulators available, like <a href="https://repast.github.io" target="_blank">Repast</a> and <a href="https://ccl.northwestern.edu/netlogo" target="_blank">NetLogo</a>. They provide many functions that can be used to easily develop complex agent-based simulations (see <a href="/assets/publications/HabitzreuterAndSouza2017wesaac.pdf" target="_blank">this short paper</a> for an example). Beyond traffic and transportation, we are particularly interested in using such simulators (especially NetLogo) to model and study scenarios of different domains, including:</p>
+
+<ul>
+  <li>Artificial intelligence applications</li>
+  <li>Nature and biology</li>
+  <li>Social sciences</li>
+  <li>Economics</li>
+  <li>Smart cities</li>
+</ul>
+
+<hr />
+
+<h2 id="applied-artificial-intelligence">Applied Artificial Intelligence</h2>
+
+<p>We are also interested in different artificial intelligence methods and their application to solve real world problems. The main topics include (but are not limited to):</p>
+
+<ul>
+  <li>Machine learning
+    <ul>
+      <li>Supervised, unsupervised, and reinforcement learning</li>
+      <li>Automated machine learning</li>
+    </ul>
+  </li>
+  <li>Planning (classical and heuristic search)</li>
+  <li>Constraint satisfaction/optimization problems</li>
+  <li>Agents and multiagent systems</li>
+</ul>
 
         <hr>
 <script>
