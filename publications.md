@@ -12,22 +12,21 @@ Go to: [[theses](#theses)] [[book chapters](#book-chapters)] [[journal papers](#
 
 {% assign content = site.data.publications | where:"type","thesis" %}
 {% for item in content %}
-> <span class="paper-title">{{ item.title }}</span>\\
-{{ item.authors }}\\
-{{ item.description }}\\
+><span class="paper-title">{{ item.title }}</span>\\
+<span class="paper-description">{{ item.authors }}</span>\\
+<span class="paper-description">{{ item.description }}</span>\\
 {% if item.pdf != "none" %}<!--
---><a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank"><span class="fa fa-file-pdf-o pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank">PDF</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.presentation != "none" %}<!--
---><a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank"><span class="fa fa-slideshare pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank">SLIDES</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.poster != "none" %}<!--
---><a href="/assets/publications/{{ item.poster }}.pdf" target="_blank"><span class="fa fa-area-chart pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.poster }}.pdf" target="_blank">POSTER</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.link != "none" %}<!--
---><a href="{{ item.link }}" target="_blank"><span class="fa fa-external-link pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="{{ item.link }}" target="_blank">LINK</a>]</span><!--
 -->{% endif %}
-
 {% endfor %}
 
 
@@ -36,22 +35,21 @@ Go to: [[theses](#theses)] [[book chapters](#book-chapters)] [[journal papers](#
 
 {% assign content = site.data.publications | where:"type","chapter" %}
 {% for item in content %}
-> <span class="paper-title">{{ item.title }}</span>\\
-{{ item.authors }}\\
-{{ item.description }}\\
+><span class="paper-title">{{ item.title }}</span>\\
+<span class="paper-description">{{ item.authors }}</span>\\
+<span class="paper-description">{{ item.description }}</span>\\
 {% if item.pdf != "none" %}<!--
---><a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank"><span class="fa fa-file-pdf-o pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank">PDF</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.presentation != "none" %}<!--
---><a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank"><span class="fa fa-slideshare pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank">SLIDES</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.poster != "none" %}<!--
---><a href="/assets/publications/{{ item.poster }}.pdf" target="_blank"><span class="fa fa-area-chart pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.poster }}.pdf" target="_blank">POSTER</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.link != "none" %}<!--
---><a href="{{ item.link }}" target="_blank"><span class="fa fa-external-link pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="{{ item.link }}" target="_blank">LINK</a>]</span><!--
 -->{% endif %}
-
 {% endfor %}
 
 
@@ -60,22 +58,21 @@ Go to: [[theses](#theses)] [[book chapters](#book-chapters)] [[journal papers](#
 
 {% assign content = site.data.publications | where:"type","journal" %}
 {% for item in content %}
-> <span class="paper-title">{{ item.title }}</span>\\
-{{ item.authors }}\\
-{{ item.description }}\\
+><span class="paper-title">{{ item.title }}</span>\\
+<span class="paper-description">{{ item.authors }}</span>\\
+<span class="paper-description">{{ item.description }}</span>\\
 {% if item.pdf != "none" %}<!--
---><a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank"><span class="fa fa-file-pdf-o pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank">PDF</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.presentation != "none" %}<!--
---><a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank"><span class="fa fa-slideshare pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank">SLIDES</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.poster != "none" %}<!--
---><a href="/assets/publications/{{ item.poster }}.pdf" target="_blank"><span class="fa fa-area-chart pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.poster }}.pdf" target="_blank">POSTER</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.link != "none" %}<!--
---><a href="{{ item.link }}" target="_blank"><span class="fa fa-external-link pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="{{ item.link }}" target="_blank">LINK</a>]</span><!--
 -->{% endif %}
-
 {% endfor %}
 
 
@@ -84,22 +81,21 @@ Go to: [[theses](#theses)] [[book chapters](#book-chapters)] [[journal papers](#
 
 {% assign content = site.data.publications | where:"type","conference" %}
 {% for item in content %}
-> <span class="paper-title">{{ item.title }}</span>\\
-{{ item.authors }}\\
-{{ item.description }}\\
+><span class="paper-title">{{ item.title }}</span>\\
+<span class="paper-description">{{ item.authors }}</span>\\
+<span class="paper-description">{{ item.description }}</span>\\
 {% if item.pdf != "none" %}<!--
---><a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank"><span class="fa fa-file-pdf-o pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank">PDF</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.presentation != "none" %}<!--
---><a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank"><span class="fa fa-slideshare pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank">SLIDES</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.poster != "none" %}<!--
---><a href="/assets/publications/{{ item.poster }}.pdf" target="_blank"><span class="fa fa-area-chart pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.poster }}.pdf" target="_blank">POSTER</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.link != "none" %}<!--
---><a href="{{ item.link }}" target="_blank"><span class="fa fa-external-link pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="{{ item.link }}" target="_blank">LINK</a>]</span><!--
 -->{% endif %}
-
 {% endfor %}
 
 ***
@@ -107,22 +103,21 @@ Go to: [[theses](#theses)] [[book chapters](#book-chapters)] [[journal papers](#
 
 {% assign content = site.data.publications | where:"type","other" %}
 {% for item in content %}
-> <span class="paper-title">{{ item.title }}</span>\\
-{{ item.authors }}\\
-{{ item.description }}\\
+><span class="paper-title">{{ item.title }}</span>\\
+<span class="paper-description">{{ item.authors }}</span>\\
+<span class="paper-description">{{ item.description }}</span>\\
 {% if item.pdf != "none" %}<!--
---><a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank"><span class="fa fa-file-pdf-o pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.pdf }}.pdf" target="_blank">PDF</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.presentation != "none" %}<!--
---><a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank"><span class="fa fa-slideshare pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.presentation }}.pdf" target="_blank">SLIDES</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.poster != "none" %}<!--
---><a href="/assets/publications/{{ item.poster }}.pdf" target="_blank"><span class="fa fa-area-chart pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="/assets/publications/{{ item.poster }}.pdf" target="_blank">POSTER</a>]</span><!--
 -->{% endif %}<!--
 -->{% if item.link != "none" %}<!--
---><a href="{{ item.link }}" target="_blank"><span class="fa fa-external-link pub-icon"></span></a><!--
+--><span class="paper-links">[<a href="{{ item.link }}" target="_blank">LINK</a>]</span><!--
 -->{% endif %}
-
 {% endfor %}
 
 ***
@@ -137,7 +132,7 @@ Go to: [[theses](#theses)] [[book chapters](#book-chapters)] [[journal papers](#
 > (2013) <span class="paper-title">Ensino de Algoritmos Apoiado pelo Uso de Jogos Digitais Educativos</span>\\
 > XXII Ciclo de Palestras sobre Novas Tecnologias na Educação. Ibirama, SC, Brasil
 
-> (2013) <span class="paper-title">Aprendizado e Desafios de Estudo no Exterior</span>\\
+> (2013) <span class="paper-title">Aprendizados e Desafios de Estudo no Exterior</span>\\
 > Universidade do Estado de Santa Catarina. Ibirama, SC, Brasil
 
 [scholar]: https://scholar.google.com.br/citations?user=Mwsvl0MAAAAJ&hl=pt-BR

@@ -9,15 +9,18 @@ I summarize below my main research topics and provide some brief comments about 
 
 ## Automatic Algorithm Configuration
 
-Automatic techniques have been developed in the last years to automatically search for good parameter settings of some target algorithm. The so-called algorithm configurators apply heuristic algorithms ([ParamILS](http://www.cs.ubc.ca/labs/beta/Projects/ParamILS){:target="_blank"}, [GGA](https://bitbucket.org/gga_ac/dgga/src/master){:target="_blank"}), racing procedures ([irace](http://iridia.ulb.ac.be/irace){:target="_blank"}) or model based approaches ([SMAC](https://www.automl.org/automated-algorithm-design/algorithm-configuration/smac){:target="_blank"}) to explore the parameter space. Some useful content about this research field include:
+Automatic techniques have been developed in the last years to automatically search for good parameter settings for decision and optimization algorithms. The so-called algorithm configurators apply heuristic approaches ([ParamILS](http://www.cs.ubc.ca/labs/beta/Projects/ParamILS){:target="_blank"}, [GGA](https://bitbucket.org/gga_ac/dgga/src/master){:target="_blank"}), racing procedures ([irace](http://iridia.ulb.ac.be/irace){:target="_blank"}) or model-based methods ([SMAC](https://www.automl.org/automated-algorithm-design/algorithm-configuration/smac){:target="_blank"}) to explore the parameter space. Some useful content about this research field include:
 
 + [This survey article](http://dx.doi.org/10.1007/978-3-319-91086-4_17){:target="_blank"}
 + [This presentation (video) of Dr. Thomas Stützle](https://vimeo.com/199009877){:target="_blank"}
 + [This tutorial describing the use of irace](http://iridia.ulb.ac.be/irace/files/irace-comex-tutorial.pdf){:target="_blank"}
 
-We have recently applied automatic configuration techniques for the design of heuristic optimization algorithms. First, we implement a configurable framework with the algorithm components and their input parameters. Then, we automatically search for good algorithm designs using algorithm configurators. Using this methodology, we found state-of-the-art algorithms for the [binary quadratic programming](/assets/publications/SouzaAndRitt2018evocop.pdf){:target="_blank"} and [test assignment](/assets/publications/SouzaAndRitt2018cec.pdf){:target="_blank"} problems, for example.
+We have recently applied automatic configuration techniques for the design of heuristic optimization algorithms. First, we implement a configurable framework with the algorithm components and their input parameters. Then, we automatically search for good algorithm designs using algorithm configurators. Using this methodology, we found state-of-the-art algorithms for the [binary quadratic programming](/assets/publications/SouzaAndRitt2018evocop.pdf){:target="_blank"} and [test assignment](/assets/publications/SouzaAndRitt2018cec.pdf){:target="_blank"} problems. We are also working on the improvement of the automatic configuration tools. For example, we are exploring the use of capping mechanisms to speed up the configuration process, and developing visualization tools for irace.
 
-We are also working on the improvement of the automatic configuration tools. For example, we are exploring the use of capping mechanisms to speed up the configuration process. We are also developing analysis tools for irace (see [cat](https://github.com/souzamarcelo/cat){:target="_blank"}).
+In the links below you can find more details about these projects:
++ [AutoBQP](https://github.com/souzamarcelo/autobqp){:target="_blank"}: a generic solver for binary optimization problems
++ [capopt](https://souzamarcelo.github.io/capopt){:target="_blank"}: capping methods for the automatic configuration of optimization algorithms
++ [acviz](https://github.com/souzamarcelo/acviz){:target="_blank"}: algorithm configuration visualizations for irace
 
 ***
 

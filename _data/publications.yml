@@ -24,15 +24,6 @@
   poster: none
   presentation: none
   link: http://dx.doi.org/10.1007/978-3-319-77449-7_5
-
-- title: Uma metodologia baseada em quiz na disciplina de Inteligência Computacional
-  authors: Marcelo de Souza
-  description: "Soraia Cristina Tonon da Luz. (Org.). Relatos e Retratos do Ensino de Graduação da Udesc. 1ed, v. 1, p. 40-40, 2018"
-  type: chapter
-  pdf: none
-  poster: none
-  presentation: none
-  link: none
   
 - title: Liar liar, pants on fire; or how to use subjective logic and argumentation to evaluate information from untrustworthy sources
   authors: Andrew Koster, Ana L. C. Bazzan, Marcelo de Souza
@@ -45,12 +36,21 @@
 
 - title: Ensino de Algoritmos Apoiado pelo Uso de Jogos Digitais Educativos
   authors: Marcelo de Souza, Eliana V. Jaeger, Brigiane M. S. Cardoso
-  description: RENOTE - Revista Novas Tecnologias na Educação, v. 11, p. 1, 2013
+  description: RENOTE -- Revista Novas Tecnologias na Educação, v. 11, p. 1, 2013
   type: journal
   pdf: SouzaEtAl2013renote
   poster: none
   presentation: none
   link: https://seer.ufrgs.br/renote/article/view/44438
+
+- title: On the Automatic Configuration of Algorithms
+  authors: Marcelo de Souza
+  description: Proceedings of the 1st Doctoral Consortium at the European Conference on Artificial Intelligence (DC-ECAI 2020)
+  type: conference
+  pdf: Souza2020dcecai
+  poster: none
+  presentation: Souza2020dcecaiPres
+  link: https://youtu.be/_tf30_-ePpA
 
 - title: Capping strategies based on performance envelopes for the automatic design of meta-heuristics
   authors: Marcelo de Souza, Marcus Ritt
@@ -196,6 +196,24 @@
   presentation: none
   link: none
 
+- title: ACVIZ -- Algorithm Configuration Visualizations for irace
+  authors: Marcelo de Souza, Marcus Ritt, Manuel López-Ibáñez, Leslie Pérez Cáceres
+  description: Code and datasets available at Zenodo, 2020
+  type: other
+  pdf: none
+  poster: none
+  presentation: none
+  link: https://doi.org/10.5281/zenodo.4028906
+
+- title: Uma metodologia baseada em quiz na disciplina de Inteligência Computacional
+  authors: Marcelo de Souza
+  description: Soraia Cristina Tonon da Luz. (Org.). Relatos e Retratos do Ensino de Graduação da Udesc. 1ed, v. 1, p. 40-40, 2018
+  type: other
+  pdf: none
+  poster: none
+  presentation: none
+  link: none
+
 - title: Technical description of an agent-based model for testing the effect of com-munication, trust and belief revision methods in a collaborative traffic scenario
   authors: Marcelo de Souza, Andrew Koster, Ana L. C. Bazzan
   description: Technical report in ODD format, 2016
@@ -207,7 +225,7 @@
 
 - title: Influência dos Jogos no Campo da Inteligência Artificial
   authors: Marcelo de Souza, Adilson Vahldick
-  description: Resumo interno, REAVI - Revista Eletrônica do Alto Vale do Itajaí, v. 2, p. 157-160, 2013
+  description: Resumo interno, REAVI -- Revista Eletrônica do Alto Vale do Itajaí, v. 2, p. 157-160, 2013
   type: other
   pdf: none
   poster: none
@@ -216,7 +234,7 @@
 
 - title: Panorama Atual do Social Commerce no Brasil
   authors: Marcelo de Souza, Pablo Schoeffel
-  description: Resumo interno, REAVI - Revista Eletrônica do Alto Vale do Itajaí, v. 2, p. 161-164, 2013
+  description: Resumo interno, REAVI -- Revista Eletrônica do Alto Vale do Itajaí, v. 2, p. 161-164, 2013
   type: other
   pdf: none
   poster: none
