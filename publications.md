@@ -132,7 +132,7 @@ Go to: [[theses](#theses)] [[book chapters](#book-chapters)] [[journal papers](#
 > (2013) <span class="paper-title">Ensino de Algoritmos Apoiado pelo Uso de Jogos Digitais Educativos</span>\\
 > XXII Ciclo de Palestras sobre Novas Tecnologias na Educação. Ibirama, SC, Brasil
 
-> (2013) <span class="paper-title">Aprendizados e Desafios de Estudo no Exterior</span>\\
+> (2013) <span class="paper-title">Aprendizados e Desafios de Estudos no Exterior</span>\\
 > Universidade do Estado de Santa Catarina. Ibirama, SC, Brasil
 
 [scholar]: https://scholar.google.com.br/citations?user=Mwsvl0MAAAAJ&hl=pt-BR
