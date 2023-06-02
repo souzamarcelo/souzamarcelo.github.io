@@ -268,7 +268,11 @@ h4 {
   .title {
     text-align: center;
     margin-top: 7px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+  }
+
+  .card-text-div {
+    margin-top: 8px;
   }
 }
 /* =================================================================================================== */
@@ -277,6 +281,10 @@ h4 {
 @media (max-width: 992px) {
   #div-photo {
     width: 100%;
+  }
+
+  #img-photo {
+    width: 220px;
   }
 
   .div-presentation {
