@@ -67,7 +67,11 @@ a:hover {
 }
 
 .accesslow {
-  vertical-align: bottom;
+  vertical-align: top;
+}
+
+.myscopus {
+  font-size: 34px;
 }
 
 .mybold {
