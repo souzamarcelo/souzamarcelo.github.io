@@ -17,16 +17,19 @@ var startAnimation = function(){
           phase: 0
        },
        ball_color = {
-           r: 52,
-           g: 58,
-           b: 64
+           //r: 52,
+           //g: 58,
+           //b: 64
+           r: 200,
+           g: 200,
+           b: 200
        },
-       R = 4,
+       R = 4.2,
        balls = [],
     
     // Line
-       link_line_width = 0.8,
-       dis_limit = 260,
+       link_line_width = 0.3,
+       dis_limit = 180,
        add_mouse_point = true,
        mouse_in = false,
        mouse_ball = {
@@ -40,8 +43,8 @@ var startAnimation = function(){
     
     // Random speed
     function getRandomSpeed(pos){
-        var  min = -1,
-           max = 1;
+        var  min = -.6,
+           max = .6;
         switch(pos){
             case 'top':
                 return [randomNumFrom(min, max), randomNumFrom(0.1, max)];
@@ -77,7 +80,7 @@ var startAnimation = function(){
                     vx: getRandomSpeed('top')[0],
                     vy: getRandomSpeed('top')[1],
                     r: R,
-                    alpha: 0.5,
+                    alpha: 1,
                     phase: randomNumFrom(0, 10)
                 }
                 break;
@@ -88,7 +91,7 @@ var startAnimation = function(){
                     vx: getRandomSpeed('right')[0],
                     vy: getRandomSpeed('right')[1],
                     r: R,
-                    alpha: 0.5,
+                    alpha: 1,
                     phase: randomNumFrom(0, 10)
                 }
                 break;
@@ -99,7 +102,7 @@ var startAnimation = function(){
                     vx: getRandomSpeed('bottom')[0],
                     vy: getRandomSpeed('bottom')[1],
                     r: R,
-                    alpha: 0.5,
+                    alpha: 1,
                     phase: randomNumFrom(0, 10)
                 }
                 break;
@@ -110,7 +113,7 @@ var startAnimation = function(){
                     vx: getRandomSpeed('left')[0],
                     vy: getRandomSpeed('left')[1],
                     r: R,
-                    alpha: 0.5,
+                    alpha: 1,
                     phase: randomNumFrom(0, 10)
                 }
                 break;
@@ -125,7 +128,7 @@ var startAnimation = function(){
         Array.prototype.forEach.call(balls, function(b){
            ctx.fillStyle = 'rgba('+ball_color.r+','+ball_color.g+','+ball_color.b+','+b.alpha+')';
            ctx.beginPath();
-           ctx.arc(b.x, b.y, R, 0, Math.PI*2, true);
+           ctx.arc(b.x, b.y, b.r, 0, Math.PI*2, true);
            ctx.closePath();
            ctx.fill();
         });
@@ -180,7 +183,7 @@ var startAnimation = function(){
     
     // add balls if there a little balls
     function addBallIfy(){
-        if(balls.length < 20){
+        if(balls.length < 50){
             balls.push(getRandomBall());
         }
     }
@@ -192,14 +195,14 @@ var startAnimation = function(){
         }
     
       if (balls.length == 0) {
-        initBalls(30);
+        initBalls(50);
       }
     
       ctx.clearRect(0, 0, can_w, can_h);
     
-      renderBalls();
-    
       renderLines();
+
+      renderBalls();
     
       updateBalls();
     
@@ -210,14 +213,15 @@ var startAnimation = function(){
     
     // Init Balls
     function initBalls(num){
+        var sizeVar = 3.8;
         for(var i = 0; i < num; i++){
             balls.push({
                 x: randomSidePos(can_w),
                 y: randomSidePos(can_h),
                 vx: getRandomSpeed('top')[0],
                 vy: getRandomSpeed('top')[1],
-                r: R,
-                alpha: 0.5,
+                r: R + randomNumFrom(-sizeVar,sizeVar),
+                alpha: 1,
                 phase: randomNumFrom(0, 10)
             });
         }

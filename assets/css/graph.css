@@ -169,7 +169,7 @@ code.rfun:after {
     font-size: medium;
 }
 
-span.anchor { 
+span.anchor {
   margin-top: -70px;        /* Size of fixed header */
   padding-bottom: 70px;
   height: 0px;
@@ -198,7 +198,7 @@ span.anchor {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #e9ecef;
+	background-color: white;
 }
 .jumbotron .container {
 	pointer-events: none;
