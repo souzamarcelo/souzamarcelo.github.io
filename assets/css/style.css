@@ -57,8 +57,7 @@ a:hover {
 .access {
   pointer-events: fill;
   font-size: 32px;
-  margin-right: 12px;
-  margin-left: -5px;
+  margin-right: 7px;
   color: 	#6b2c91;
 }
 
@@ -314,7 +313,8 @@ h4 {
   }
 
   .access {
-    margin-right: 9px;
+    font-size: 30px;
+    margin-right: 5px;
   }
 }
 /* =================================================================================================== */
