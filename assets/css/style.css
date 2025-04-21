@@ -52,6 +52,7 @@ a:hover {
 
 .accesslist {
   margin-top: 45px;
+  margin-left: -5px;
 }
 
 .access {
@@ -248,6 +249,10 @@ h4 {
   border-radius: 3px;
 }
 
+.btn:focus{
+  color: #6b2c91;
+}
+
 .btn:hover {
   color: white;
   background-color: #6b2c91;
@@ -300,6 +305,10 @@ h4 {
   
   #my-name {
     margin-top: 20px;
+  }
+
+  .accesslist {
+    margin-left: 0px;
   }
 }
 /* =================================================================================================== */
