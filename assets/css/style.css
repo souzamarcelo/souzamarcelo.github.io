@@ -128,8 +128,13 @@ blockquote {
 }
 
 #img-photo {
+  pointer-events: fill;
   width: 250px;
   opacity: 0.75;
+}
+
+#img-photo:hover {
+  opacity: 1;
 }
 
 .div-photo {
