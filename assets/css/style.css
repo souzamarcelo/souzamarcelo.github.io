@@ -129,6 +129,7 @@ blockquote {
 
 #img-photo {
   width: 250px;
+  opacity: 0.75;
 }
 
 .div-photo {
