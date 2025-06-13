@@ -67,11 +67,15 @@ a:hover {
 }
 
 .accesslow {
-  vertical-align: top;
+  vertical-align: bottom;
 }
 
 .myscopus {
-  font-size: 34px;
+  font-size: 37px;
+  margin-bottom: -2px;
+  margin-left: -3px;
+  margin-right: 2px;
+  vertical-align: bottom;
 }
 
 .mybold {
@@ -235,7 +239,6 @@ h4 {
 .card-text {
   color:rgb(120,128,122);
 }
-
 
 .btn {
   color: #6b2c91;
